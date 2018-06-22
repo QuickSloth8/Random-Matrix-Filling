@@ -10,10 +10,6 @@ COLS = 0
 ascii_mat = []
 display_mat = []
 
-# pics_lst = ['Argentina_flag.txt', 'Brazil_flag.txt', 'Egypt_flag.txt', 'Israel_flag.txt']
-# pics_lst = ['1.txt', '2.txt', '3.txt', '4.txt', '5.txt', '6.txt', '7.txt', '8.txt']
-
-# ASCII_PICS_PATH = 'to_draw\\'
 ASCII_PICS_DIR = 'ascii_pics'
 
 def main():
@@ -25,11 +21,20 @@ def main():
 			get_ascii_mat(ASCII_PICS_DIR+'\\'+pic)
 			random_draw()
 		except KeyboardInterrupt:
-			imediate_print()
+			try:
+				fast_fill()
+			except KeyboardInterrupt:
+				imediate_print()
 		try:
 			time.sleep(10)
 		except KeyboardInterrupt:
 			pass
+
+def fast_fill():
+	for i in range(ROWS):
+		for j in range(COLS):
+			display_mat[i][j] = ascii_mat[i][j]
+		print_display_mat()
 
 def imediate_print():
 	cls()
